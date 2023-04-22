@@ -1,0 +1,25 @@
+services:
+  chat-git-pity-backend:
+    environment:
+      - APP_ENV=dev
+    volumes:
+      - type: bind
+        source: ../
+        target: /app
+      - /app/backend/target
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    command: tail -F anything
+    ports:
+      - "80:80"
+      - "443:443"
+    container_name: chat-git-pity-backend
+    networks:
+      - chat-git-pity-local
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+networks:
+  chat-git-pity-local:
