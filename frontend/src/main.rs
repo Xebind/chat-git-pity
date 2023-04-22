@@ -1,66 +1,73 @@
-use axum::{
-    routing::get,
-    body::{boxed, Body, BoxBody},
-    http::{Request, Response, StatusCode, Uri},
-    Router,
-};
-use std::net::SocketAddr;
-use tower::ServiceExt;
-use tower_http::services::ServeDir;
+use yew::prelude::*;
 
-#[tokio::main]
-async fn main() {
-    // Route all requests on "/" endpoint to anonymous handler.
-    //
-    // A handler is an async function which returns something that implements
-    // `axum::response::IntoResponse`.
 
-    // A closure or a function can be used as handler.
-
-    let app = Router::new()
-                    .route("/healthcheck", get(healthcheck))
-                    .nest_service("/", get(handler));
-    //        Router::new().route("/", get(|| async { "Hello, world!" }));
-
-    // Address that server will bind to.
-    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
-
-    // Use `hyper::server::Server` which is re-exported through `axum::Server` to serve the app.
-    axum::Server::bind(&addr)
-        // Hyper server takes a make service.
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+struct Message {
+    user: String,
+    message: String,
+    time: String,
 }
 
-async fn healthcheck() -> &'static str {
-    "healthcheck: OK"
-}
+impl Message {
+    fn new() -> Self {
+       return Message { user: String::from("Me"), message: String::from("Hello, world!"), time: String::from("1:00 AM")};
+    }
 
-async fn handler(uri: Uri) -> Result<Response<BoxBody>, (StatusCode, String)> {
-    let res = get_static_file(uri.clone()).await?;
-
-    if res.status() == StatusCode::NOT_FOUND {
-        // try with `.html`
-        // TODO: handle if the Uri has query parameters
-        match format!("index.html").parse() {
-            Ok(uri_html) => get_static_file(uri_html).await,
-            Err(_) => Err((StatusCode::INTERNAL_SERVER_ERROR, "Invalid URI".to_string())),
-        }
-    } else {
-        Ok(res)
+    fn new_message(message: String) -> Self {
+       return Message { user: String::from("Me"), message, time: String::from("1:00 AM")};
     }
 }
 
-async fn get_static_file(uri: Uri) -> Result<Response<BoxBody>, (StatusCode, String)> {
-    let req = Request::builder().uri(uri).body(Body::empty()).unwrap();
+#[function_component(App)]
+fn app() -> Html {
 
-    // `ServeDir` implements `tower::Service` so we can call it with `tower::ServiceExt::oneshot`
-    match ServeDir::new(".").oneshot(req).await {
-        Ok(res) => Ok(res.map(boxed)),
-        Err(err) => Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            format!("Something went wrong: {}", err),
-        )),
+    html! {
+        <div class="container">
+            <div class="app">
+            <div class="chat-messages">
+            <div class="chat">
+              <div class="chat-content clearfix">
+                <span class="friend last">
+                      {"Hi, How are You?"}
+                      <span class="time">
+                        {"7:30 PM"}
+                      </span>
+                </span>
+                <span class="you first">
+                      {"Hi, I am fine.
+                      How about you?"}
+                      <span class="time">
+                        {"7:31 PM"}
+                      </span>
+                </span>
+                <span class="you last">
+                      {"lets meet,
+                      this sunday!"}
+                      <span class="time">
+                        {"7:31 PM"}
+                      </span>
+                </span>
+              </div>
+
+              <div class="msg-box">
+                <input type="text" class="ip-msg" placeholder="type something.."/>
+                <span class="btn-group">
+                      <button class="send"> {"Send"}</button>
+                    </span>
+              </div>
+
+            </div>
+          </div>
+       </div>
+  </div>
     }
+}
+fn get_messages() -> Vec<Message>{
+    let messages: Vec<Message> = Vec::new();
+    //todo get last 25 messages from ddbb?
+
+    return messages;
+}
+
+fn main() {
+    yew::Renderer::<App>::new().render();
 }
