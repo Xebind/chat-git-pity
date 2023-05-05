@@ -12,7 +12,7 @@ jobs:
       PROJECT_ID: chat-git-pity
     steps:
     - name: Checkout
-      uses: actions/chechout@v2
+      uses: actions/checkout@v2
 
     - uses: google-github-actions/setup-gcloud@main
       with:
