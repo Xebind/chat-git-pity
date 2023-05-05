@@ -1,4 +1,3 @@
----
 name: Build Chat-Git-Pity Image to Google Cloud Platform
 on:
   push:
@@ -12,23 +11,23 @@ jobs:
       IMAGE_NAME: chat-git-pity-frontend
       PROJECT_ID: chat-git-pity
     steps:
-      -name: Checkout
+    - name: Checkout
       uses: actions/chechout@v2
 
-      -uses: google-github-actions/setup-gcloud@master
+    - uses: google-github-actions/setup-gcloud@master
       with:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-        project_id: %{{ env.PROJECT_ID }}
+        project_id: chat-git-pity
         export_default_credentials: true
 
-      -name: Build Docker Image
-      run: docker build -t $IMAGE_NAME:latest .
+    - name: Build Docker Image
+      run: cd frontend && docker build -t $IMAGE_NAME:latest .
 
-      -name: Configure Docker Client
+    - name: Configure Docker Client
       run: |-
         gcloud auth configure-docker --quiet
 
-      -name: Push Docker Image to Container Registry
+    - name: Push Docker Image to Container Registry
       run: |-
         docker tag $IMAGE_NAME_latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker push grc.io/$PROJECT_ID/$IMAGE_NAME:latest
