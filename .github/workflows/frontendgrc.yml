@@ -21,7 +21,7 @@ jobs:
         export_default_credentials: true
 
     - name: Build Docker Image
-      run: cd frontend && docker build -t $IMAGE_NAME:latest .
+      run: docker build . -t $IMAGE_NAME:latest -f frontend/Dockerfile
 
     - name: Configure Docker Client
       run: |-
