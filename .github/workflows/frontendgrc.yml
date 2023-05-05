@@ -22,7 +22,7 @@ jobs:
         context: .
 
     - name: Build Docker Image
-      working-directory: frontend
+      working-directory: ./frontend
       run: docker build . -t $IMAGE_NAME:latest
 
     - name: Configure Docker Client
@@ -33,3 +33,7 @@ jobs:
       run: |-
         docker tag $IMAGE_NAME_latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker push grc.io/$PROJECT_ID/$IMAGE_NAME:latest
+        
+        
+        
+        
