@@ -31,8 +31,8 @@ jobs:
 
     - name: Push Docker Image to Container Registry
       run: |-
-        docker tag $IMAGE_NAME_latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-        docker push grc.io/$PROJECT_ID/$IMAGE_NAME:latest
+        docker tag frontend europe-southwest1-docker.pkg.dev/chat-git-pity/frontend/frontend
+        docker push europe-southwest1-docker.pkg.dev/chat-git-pity/frontend/frontend
         
         
         
