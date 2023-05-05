@@ -24,7 +24,6 @@ jobs:
     - name: Build Docker Image
       working-directory: ./frontend
       run: ls -la
-      run: docker build . -t $IMAGE_NAME:latest
 
     - name: Configure Docker Client
       run: |-
