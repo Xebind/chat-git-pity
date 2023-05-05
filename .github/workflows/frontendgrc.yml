@@ -8,7 +8,7 @@ jobs:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: chat-git-pity-frontend
+      IMAGE_NAME: frontend
       PROJECT_ID: chat-git-pity
     steps:
     - name: Checkout
