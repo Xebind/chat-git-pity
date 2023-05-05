@@ -19,6 +19,7 @@ jobs:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         project_id: chat-git-pity
         export_default_credentials: true
+        context: .
 
     - name: Build Docker Image
       working-directory: frontend
