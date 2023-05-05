@@ -1,4 +1,3 @@
----
 name: Build Chat-Git-Pity Image to Google Cloud Platform
 on:
   push:
