@@ -7,10 +7,13 @@ WORKDIR /app
 # install dependencies
 RUN apt update && apt install lld clang -y
 
+# install trunk
+RUN cargo install trunk wasm-bindgen-cli
+
 # install protobuf
-RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip
-RUN unzip protoc-3.15.8-linux-x86_64.zip -d /usr/local
-RUN export PATH="$PATH:/usr/local/bin"
+#RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip
+#RUN unzip protoc-3.15.8-linux-x86_64.zip -d /usr/local
+#RUN export PATH="$PATH:/usr/local/bin"
 
 # copy the source code
 COPY . .
@@ -24,4 +27,4 @@ EXPOSE 8080
 EXPOSE 9090
 
 # run the app
-CMD ["./target/release/chatgipity-backend", "--help"]
+#CMD ["trunk serve"]
