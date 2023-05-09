@@ -23,4 +23,3 @@ tracing-subscriber = {version="0.3", features=["env-filter", "fmt"]}
 
 [build-dependencies]
 tonic-build = "0.9"
-
