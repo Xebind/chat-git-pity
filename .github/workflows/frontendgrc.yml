@@ -8,7 +8,7 @@ jobs:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: chat-git-pity-frontend
+      IMAGE_NAME: frontend
       PROJECT_ID: chat-git-pity
     steps:
     - name: Checkout
@@ -31,8 +31,8 @@ jobs:
 
     - name: Push Docker Image to Container Registry
       run: |-
-        docker tag $IMAGE_NAME_latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-        docker push grc.io/$PROJECT_ID/$IMAGE_NAME:latest
+        docker tag frontend europe-southwest1-docker.pkg.dev/chat-git-pity/frontend/frontend
+        docker push europe-southwest1-docker.pkg.dev/chat-git-pity/frontend/frontend
         
         
         
