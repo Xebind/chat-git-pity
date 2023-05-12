@@ -16,3 +16,4 @@ RUN  cargo build --release
 EXPOSE 8080
 
 CMD ["trunk", "serve", "--release", "--address", "0.0.0.0", "--port" , "8080"]
+
