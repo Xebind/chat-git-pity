@@ -1,73 +1,99 @@
 use yew::prelude::*;
+use reqwest;
+use web_sys::{HtmlInputElement};
+use wasm_bindgen::{JsCast, JsValue};
+use gloo_console::log;
+use serde_json::json;
+use wasm_bindgen_futures;
 
 
-struct Message {
-    user: String,
-    message: String,
-    time: String,
-}
+#[path="../../shared/Domain/message.rs"]
+pub mod message;
+use crate::message::MyMessage;
 
-impl Message {
-    fn new() -> Self {
-       return Message { user: String::from("Me"), message: String::from("Hello, world!"), time: String::from("1:00 AM")};
-    }
-
-    fn new_message(message: String) -> Self {
-       return Message { user: String::from("Me"), message, time: String::from("1:00 AM")};
-    }
-}
 
 #[function_component(App)]
 fn app() -> Html {
-
     html! {
-        <div class="container">
-            <div class="app">
-            <div class="chat-messages">
-            <div class="chat">
-              <div class="chat-content clearfix">
-                <span class="friend last">
-                      {"Hi, How are You?"}
-                      <span class="time">
-                        {"7:30 PM"}
-                      </span>
-                </span>
-                <span class="you first">
-                      {"Hi, I am fine.
-                      How about you?"}
-                      <span class="time">
-                        {"7:31 PM"}
-                      </span>
-                </span>
-                <span class="you last">
-                      {"lets meet,
-                      this sunday!"}
-                      <span class="time">
-                        {"7:31 PM"}
-                      </span>
-                </span>
-              </div>
+          <div class="container">
+              <div class="app">
+              <div class="chat-messages">
+              <div class="chat">
+                <div class="chat-content clearfix">
+                 </div>
 
-              <div class="msg-box">
-                <input type="text" class="ip-msg" placeholder="type something.."/>
-                <span class="btn-group">
-                      <button class="send"> {"Send"}</button>
+                <div class="msg-box">
+                <input
+                    type="text"
+                    class="ip-msg"
+                    placeholder="type something.."
+                    id = "input"
+                />
+                  <span class="btn-group">
+                    <button onclick={|_| {
+                        let input = web_sys::window()
+                                    .unwrap()
+                                    .document()
+                                    .unwrap()
+                                    .get_element_by_id("input")
+                                    .unwrap()
+                                    .dyn_into::<web_sys::HtmlInputElement>()
+                                    .unwrap();
+                        wasm_bindgen_futures::spawn_local(async move{
+                            send_message(&input.value()).await;
+                        });
+                    }}>
+                        {"Send"}
+                    </button>
                     </span>
+                </div>
+
               </div>
-
             </div>
-          </div>
-       </div>
-  </div>
-    }
+         </div>
+    </div>
+      }
 }
-fn get_messages() -> Vec<Message>{
-    let messages: Vec<Message> = Vec::new();
-    //todo get last 25 messages from ddbb?
+async fn send_message(message: &str) {
+    log!(message);
 
-    return messages;
+    let my_message = json!({
+        "user": "me",
+        "message": message,
+        "time": "1:00 AM"
+    });
+
+    let client = reqwest::Client::new();
+        log!("client instanciated");
+
+    let res = client.post("http://localhost:8080/sendMessage")
+        .json(&my_message)
+        .send()
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+        log!("response arrived?");
+    log!(res)
+}
+
+async fn get_messages()  {
+    let client = reqwest::Client::new();
+        log!("client instanciated");
+
+    let res = client.get("http://localhost:8080/")
+        .send()
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+        log!("response arrived?");
+    log!(res)
 }
 
 fn main() {
     yew::Renderer::<App>::new().render();
 }
+

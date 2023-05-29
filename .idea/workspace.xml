@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/frontend/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/backend/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="44da693c-80a3-4b4e-a4fa-d9a03820f58d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/tests/health_check_test.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/backend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/frontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/Domain/message.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.rs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="7f0wx15l" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2OjcwTLMRiJseK6UqIPeFe381Rv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/marc/projects/chat-git-pity&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;HTML&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/backend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker/frontend" />
+      <recent name="$PROJECT_DIR$/docker/backend" />
+      <recent name="$PROJECT_DIR$/docker" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/frontend" />
+    </key>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44da693c-80a3-4b4e-a4fa-d9a03820f58d" name="Changes" comment="" />
+      <created>1682077670237</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682077670237</updated>
+    </task>
+    <servers />
+  </component>
+</project>

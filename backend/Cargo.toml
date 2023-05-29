@@ -3,10 +3,18 @@ name = "chatgipity-backend"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "chatgipity-backend"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0.163", features = ["derive"] }
+tower-http = {version = "0.4.0", features = ["cors"]}
 
 # grpc
 prost = "0.11"
@@ -23,3 +31,6 @@ tracing-subscriber = {version="0.3", features=["env-filter", "fmt"]}
 
 [build-dependencies]
 tonic-build = "0.9"
+
+[dev-dependencies]
+reqwest = "0.11.18"
